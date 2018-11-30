@@ -5,27 +5,21 @@
  */
 package com.udacity.gradle.builditbigger;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
-
-import com.pawankhandal52.englishjoke.EnglishJoke;
-import com.pawankhandal52.jokedisplay.JokeDisplayActivity;
 
 /**
  * This the Launcher Screen which attache a fragment to itself.
  */
-public class MainActivity extends AppCompatActivity {
-    private EnglishJoke englishJoke;
+public class MainActivity extends AppCompatActivity /*implements EndpointsAsyncTask.JokeRecciveInterface*/ {
+    //private EnglishJoke englishJoke;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        englishJoke = new EnglishJoke();
+        //englishJoke = new EnglishJoke();
     }
 
 
@@ -51,13 +45,18 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void tellJoke(View view) {
-        String joke  = englishJoke.getAJoke();
+    /*public void tellJoke(View view) {
+        *//*String joke  = englishJoke.getAJoke();
         Toast.makeText(this, joke, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(MainActivity.this,JokeDisplayActivity.class);
-        intent.putExtra(JokeDisplayActivity.JOKE_KEY,joke);
-        startActivity(intent);
+        *//*
+        new EndpointsAsyncTask(this).execute(new Pair<Context, String>(this, "Manfred"));
     }
-
-
+    
+    @Override
+    public void onJokeReceive(String data) {
+        Intent intent = new Intent(MainActivity.this,JokeDisplayActivity.class);
+        intent.putExtra(JokeDisplayActivity.JOKE_KEY,data);
+    
+        startActivity(intent);
+    }*/
 }

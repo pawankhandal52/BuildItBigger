@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2018 The Android Nanodegree Project made under Udacity Nanodegree Course
+ * Author Pawan Kumar Sharma
+ * All Rights Reserved
+ */
 package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
@@ -14,7 +19,7 @@ import android.widget.ProgressBar;
 import com.pawankhandal52.jokedisplay.JokeDisplayActivity;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A fragment which shows a button and where user can retive the joke from GCE
  */
 public class MainActivityFragment extends Fragment implements EndpointsAsyncTask.JokeRecciveInterface {
     

@@ -21,11 +21,10 @@ import java.io.IOException;
 import javax.annotation.Nullable;
 
 /**
- * This class is used to sned the request to the backend
+ * This class is used to send the request to the backend
  */
 public class EndpointsAsyncTask extends AsyncTask<Pair<Context,String>,Void,String> {
     private static MyApi sMyApi= null;
-    private Context mContext;
     private final String TAG = EndpointsAsyncTask.class.getSimpleName();
     private JokeRecciveInterface mJokeReceiveInterface;
     
@@ -34,16 +33,17 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context,String>,Void,Stri
         void onJokeReceive(String data);
     }
     
-    public EndpointsAsyncTask(JokeRecciveInterface jokeReceiveInterface) {
+    EndpointsAsyncTask(JokeRecciveInterface jokeReceiveInterface) {
         this.mJokeReceiveInterface = jokeReceiveInterface;
     }
     @Nullable
-    public EndpointsAsyncTask(MainActivity mainActivity){
+    EndpointsAsyncTask(MainActivity mainActivity){
     
     }
     
+    @SafeVarargs
     @Override
-    protected String doInBackground(Pair<Context, String>... params) {
+    protected final String doInBackground(Pair<Context, String>... params) {
         if(sMyApi == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
@@ -53,7 +53,7 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context,String>,Void,Stri
                     .setRootUrl("https://buiditbigger-android.appspot.com/_ah/api/")
                     .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
                         @Override
-                        public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
+                        public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) {
                             abstractGoogleClientRequest.setDisableGZipContent(true);
                         }
                     });

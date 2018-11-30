@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2018 The Android Nanodegree Project made under Udacity Nanodegree Course
+ * Author Pawan Kumar Sharma
+ * All Rights Reserved
+ */
 package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
@@ -18,7 +23,7 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.pawankhandal52.jokedisplay.JokeDisplayActivity;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A fragment which shows a button and where user can retive the joke from GCE
  */
 public class MainActivityFragment extends Fragment implements EndpointsAsyncTask.JokeRecciveInterface {
     
@@ -66,7 +71,7 @@ public class MainActivityFragment extends Fragment implements EndpointsAsyncTask
         return root;
     }
     
-    public void tellJoke() {
+    private  void tellJoke() {
         /*String joke  = englishJoke.getAJoke();
         Toast.makeText(this, joke, Toast.LENGTH_SHORT).show();
         */

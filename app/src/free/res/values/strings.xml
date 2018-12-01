@@ -3,6 +3,6 @@
     <string name="banner_ad_unit_id_test">ca-app-pub-3940256099942544/6300978111</string>
     <string name="interstitial_ad_unit_id">ca-app-pub-3688611183353098/7506961643</string>
     <string name="instructions">Press the button for a delicious joke! Its a free version go for paid version</string>
-
+    <string name ="app_mob_id">ca-app-pub-3940256099942544~3347511713</string>
 
 </resources>

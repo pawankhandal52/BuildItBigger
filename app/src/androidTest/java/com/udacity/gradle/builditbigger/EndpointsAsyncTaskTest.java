@@ -8,18 +8,19 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
- * Created by Pawan Khandal on 11/28/18,21
+ * Test class to check the joke is loaded or not
  */
-public class EndpointsAsyncTaskTest {
+public class EndpointsAsyncTaskTest implements EndpointsAsyncTask.JokeRecciveInterface {
     private final String TAG = EndpointsAsyncTaskTest.class.getSimpleName();
+    private String joke;
     
     @Test
     public void doInBackground() {
         try {
-            MainActivity mainActivity = new MainActivity();
-            EndpointsAsyncTask endpointsAsyncTask = new EndpointsAsyncTask(mainActivity);
+            EndpointsAsyncTask endpointsAsyncTask = new EndpointsAsyncTask(this);
             endpointsAsyncTask.execute();
             String result = endpointsAsyncTask.get(60, TimeUnit.SECONDS);
         
@@ -28,6 +29,13 @@ public class EndpointsAsyncTaskTest {
             Log.e(TAG, "doInBackground: "+result );
         } catch (Exception e) {
             Log.e(TAG, "time out please try again later");
+            fail();
         }
+    }
+    
+    @Override
+    public void onJokeReceive(String data) {
+        this.joke = data;
+        
     }
 }
